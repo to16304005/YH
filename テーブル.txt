@@ -1,0 +1,17 @@
+Threadテーブル
+
+CREATE TABLE Thread (
+      thread_id   NUMBER(7)      CONSTRAINT pk_thread_id PRIMARY KEY
+    ,thread_name  VARCHAR2(50)   NOT NULL　
+    ,thread_created_date    date   DEFAULT sysdate NOT NULL
+    );
+
+Resテーブル
+CREATE TABLE Res (
+     thread_id   NUMBER(7)    CONSTRAINT fk_thread_id REFERENCES Thread(thread_id)
+    ,res_id      NUMBER(7)
+    ,res_date    date         DEFAULT sysdate NOT NULL
+    ,res_name    VARCHAR2(40)
+    ,res_content VARCHAR2(4000) NOT NULL
+    ,PRIMARY KEY(thread_id, res_id)
+    );
