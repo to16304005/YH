@@ -40,5 +40,8 @@ start with 1
 ;
 
 
+insert into res(thread_id,res_id,res_content)
+values('hensuu',res_id_seq.nextval,'noname');
+
 
 
