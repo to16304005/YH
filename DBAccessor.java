@@ -14,14 +14,14 @@ public class DBAccessor{
 
   public void createConnection(){
 		try{
-			//JDBCï¿½hï¿½ï¿½ï¿½Cï¿½o ï¿½gï¿½pï¿½ï¿½ï¿½é‚½ï¿½ß‚Ì‹Lï¿½q
+			//JDBC?¿½h?¿½?¿½?¿½C?¿½o ?¿½g?¿½p?¿½?¿½?¿½é‚½?¿½ß‚Ì‹L?¿½q
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			//Oracleï¿½ÉÚ‘ï¿½ï¿½ï¿½ï¿½ï¿½
-			Connection cn=
+			//Oracle?¿½ÉÚ‘ï¿½?¿½?¿½?¿½?¿½
+			cn=
 			   DriverManager.getConnection
 	 	 	 ("jdbc:oracle:thin:@localhost:1521:orcl",	"info","pro");
-			System.out.println("ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ï¿½");
+			System.out.println("?¿½Ú‘ï¿½?¿½?¿½?¿½?¿½");
       cn.setAutoCommit(false);
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
@@ -37,11 +37,10 @@ public class DBAccessor{
   }
 
 
-
   public ArrayList readThreads(){
-    //SELECTï¿½ï¿½
+    //SELECT?¿½?¿½
     String sql = "SELECT thread_name, thread_created_date FROM Tread";
-    ArrayList al<ThreadBean> = new ArrayList()<ThreadBean>;
+    ArrayList<ThreadBean> al<ThreadBean> = new ArrayList()<ThreadBean>;
 
     Statement st = cn.createStatement();
     ResultSet rs = st.executeQuery(sql);
@@ -61,7 +60,7 @@ public class DBAccessor{
   }
 
   public ArrayList readRes(int threadId){
-    //SELECTï¿½ï¿½
+    //SELECT?¿½?¿½
     String sql = "SELECT res_id, res_date, res_content FROM Res WHERE thread_Id =" + threadId ;
 
     Statement st = cn.createStatement();
@@ -82,6 +81,24 @@ public class DBAccessor{
   }
 
   public void writeThreads(String ThreadName){
+    String sql = "INSERT INTO Thread(thread_id, thread_name) VALUES(thread_id_seq.nextval, '"+ ThreadName +"')";
+    try{
+      Statement st = cn.createStatement();
+      st.executeUpdate(sql);
 
+      cn.commit();
+
+      st.close();
+
+      cn.close();
+    }catch(SQLException e){
+      e.printStackTrace();
+    }catch(Exception e){
+      e.printStackTrace();
+    }
+  }
+
+  public void writeRes(String ThreadId){
+    String sql = "INSERT INTO Res(res_id, res)"
   }
 }
