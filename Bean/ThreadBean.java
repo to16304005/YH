@@ -1,4 +1,3 @@
-package pac;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +7,9 @@ public class ThreadBean{
   private int threadId;
   private String threadName;
   private String threadCreatedDate;
-  private ArrayList<ResBean> ResBeanList;
+  private ArrayList <ResBean>ResBeanList;
+	
+	ResBean RB=new ResBean();
 
   public int getThreadId(){
     return this.threadId;

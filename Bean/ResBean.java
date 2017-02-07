@@ -1,4 +1,3 @@
-package pac;
 
 public class ResBean{
 
