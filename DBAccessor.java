@@ -14,14 +14,14 @@ public class DBAccessor{
 
   public void createConnection(){
 		try{
-			//JDBCƒhƒ‰ƒCƒo g—p‚·‚é‚½‚ß‚Ì‹Lq
+			//JDBCï¿½hï¿½ï¿½ï¿½Cï¿½o ï¿½gï¿½pï¿½ï¿½ï¿½é‚½ï¿½ß‚Ì‹Lï¿½q
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			//Oracle‚ÉÚ‘±‚·‚é
+			//Oracleï¿½ÉÚ‘ï¿½ï¿½ï¿½ï¿½ï¿½
 			Connection cn=
 			   DriverManager.getConnection
 	 	 	 ("jdbc:oracle:thin:@localhost:1521:orcl",	"info","pro");
-			System.out.println("Ú‘±Š®—¹");
+			System.out.println("ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ï¿½");
       cn.setAutoCommit(false);
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
@@ -39,7 +39,7 @@ public class DBAccessor{
 
 
   public ArrayList readThreads(){
-    //SELECT•¶
+    //SELECTï¿½ï¿½
     String sql = "SELECT thread_name, thread_created_date FROM Tread";
     ArrayList al<ThreadBean> = new ArrayList()<ThreadBean>;
 
@@ -61,7 +61,7 @@ public class DBAccessor{
   }
 
   public ArrayList readRes(int threadId){
-    //SELECT•¶
+    //SELECTï¿½ï¿½
     String sql = "SELECT res_id, res_date, res_content FROM Res WHERE thread_Id =" + threadId ;
 
     Statement st = cn.createStatement();
@@ -80,5 +80,8 @@ public class DBAccessor{
 
     return this.al;
   }
+
+  public void writeThreads(String ThreadName){
+
   }
 }
