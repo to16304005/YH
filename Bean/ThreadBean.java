@@ -7,7 +7,7 @@ public class ThreadBean{
   private int threadId;
   private String threadName;
   private String threadCreatedDate;
-  private ArrayList ResBeanList;
+  private ArrayList<ResBean> ResBeanList;
 
   public int getThreadId(){
     return this.threadId;
@@ -19,7 +19,7 @@ public class ThreadBean{
     return this.threadCreatedDate;
   }
   public ArrayList getResBean(){
-    return this.resBean;
+    return this.ResBeanList;
   }
 
   public void setThreadId(int threadId){
@@ -31,7 +31,7 @@ public class ThreadBean{
   public void setThreadCreatedDate(String threadCreatedDate){
     this.threadCreatedDate = threadCreatedDate;
   }
-	public void setResBeanList(ResBean){
-		this.ResBeanList=ResBeanList;
+	public void setResBeanList(ResBean rb){
+		ResBeanList.add(rb);
 	}
 }
