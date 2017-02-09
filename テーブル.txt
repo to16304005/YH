@@ -10,10 +10,10 @@ ResÉeÅ[ÉuÉã
 CREATE TABLE Res (
      thread_id   NUMBER(7)    CONSTRAINT fk_thread_id REFERENCES Thread(thread_id)
     ,res_id      NUMBER(7)
-    ,res_date    date         DEFAULT sysdate NOT NULL
+    ,res_date    date         DEFAULT sysdate 
     ,res_name    VARCHAR2(40)
     ,res_content VARCHAR2(4000) NOT NULL
-    ,PRIMARY KEY(thread_id, res_id)
+    ,PRIMARY KEY(res_id)
     );
 
 
@@ -37,11 +37,11 @@ create sequence res_id_seq
 increment by 1
 minvalue 0
 start with 1
-;
+;sle
 
 
 insert into res(thread_id,res_id,res_content)
-values('hensuu',res_id_seq.nextval,'noname');
+values(thread_id_seq.currval,res_id_seq.nextval,'noname');
 
 
 
