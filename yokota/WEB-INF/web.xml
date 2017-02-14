@@ -1,0 +1,56 @@
+<web-app>
+	
+	
+		
+	<servlet>
+			<servlet-name>inputrjp</servlet-name>
+			<jsp-file>/inputrjp.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+			<servlet-name>inputrjp</servlet-name>
+			<url-pattern>/inputrjp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+			<servlet-name>thread</servlet-name>
+			<jsp-file>/thread.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+			<servlet-name>thread</servlet-name>
+			<url-pattern>/thread</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+			<servlet-name>res</servlet-name>
+			<jsp-file>/res.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+			<servlet-name>res</servlet-name>
+			<url-pattern>/res</url-pattern>
+	</servlet-mapping>
+
+	
+	<servlet>
+		<servlet-name>rjpServlet</servlet-name>
+		<servlet-class>rjpServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+			<servlet-name>rjpServlet</servlet-name>
+			<url-pattern>/rjpServlet</url-pattern>
+	</servlet-mapping>	
+
+	<servlet>
+		<servlet-name>rjpResServlet</servlet-name>
+		<servlet-class>rjpResServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+			<servlet-name>rjpResServlet</servlet-name>
+			<url-pattern>/rjpResServlet</url-pattern>
+	</servlet-mapping>	
+	
+</web-app>
