@@ -13,7 +13,6 @@ CREATE TABLE Res (
     ,res_date    date         DEFAULT sysdate 
     ,res_name    VARCHAR2(40)
     ,res_content VARCHAR2(4000) NOT NULL
-    ,PRIMARY KEY(res_id)
     );
 
 
@@ -42,6 +41,8 @@ start with 1
 
 insert into res(thread_id,res_id,res_content)
 values(thread_id_seq.currval,res_id_seq.nextval,'noname');
+
+
 
 
 
