@@ -9,19 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBAccessor{
-
   private Connection cn;
-
   public void createConnection(){
 		try{
-			//JDBC?¿½h?¿½?¿½?¿½C?¿½o ?¿½g?¿½p?¿½?¿½?¿½é‚½?¿½ß‚Ì‹L?¿½q
+			//JDBC???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½h???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½C???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½o ???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½g???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½p???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½é‚½???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ß‚Ì‹L???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½q
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			//Oracle?¿½ÉÚ‘ï¿½?¿½?¿½?¿½?¿½
+			//Oracle???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½ÉÚ‘ï¿½???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½???ï¿½ï¿½?ï¿½ï¿½??ï¿½ï¿½?ï¿½ï¿½
 			cn=
 			   DriverManager.getConnection
 	 	 	 ("jdbc:oracle:thin:@localhost:1521:orcl",	"info","pro");
-			System.out.println("?¿½Ú‘ï¿½?¿½?¿½?¿½?¿½");
+			System.out.println("ï¿½Ú‘ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[");
       cn.setAutoCommit(false);
 		}catch(ClassNotFoundException e){
 			e.printStackTrace();
@@ -37,54 +35,19 @@ public class DBAccessor{
   }
 
 
-  public ArrayList readThreads(){
-    //SELECT?¿½?¿½
-    String sql = "SELECT thread_name, thread_created_date FROM Tread";
-    ArrayList<ThreadBean> al<ThreadBean> = new ArrayList()<ThreadBean>;
-
-    Statement st = cn.createStatement();
-    ResultSet rs = st.executeQuery(sql);
-
-    //
-    while(rs.next()){
-
-      TreadBean tb = new ThreadBean();
-
-      tb.setThreadName(rs.getString(1));
-      tb.setThreadCreatedDate(rs.getString(2));
-
-      al.add(tb);
-    }
-
-    return this.al;
-  }
-
-  public ArrayList readRes(int threadId){
-    //SELECT?¿½?¿½
-    String sql = "SELECT res_id, res_date, res_content FROM Res WHERE thread_Id =" + threadId ;
-
-    Statement st = cn.createStatement();
-    ResultSet rs = st.executeQuery(sql);
-
-    //
-    while(rs.next()){
-
-      TreadBean tb = new ThreadBean();
-
-      tb.setResName(rs.getString(1));
-      tb.setThreadCreatedDate(rs.getString(2));
-
-      al.add(tb);
-    }
-
-    return this.al;
-  }
-
   public void writeThreads(String ThreadName){
     String sql = "INSERT INTO Thread(thread_id, thread_name) VALUES(thread_id_seq.nextval, '"+ ThreadName +"')";
+    String id="select max(thread_id) from thread";
+
     try{
       Statement st = cn.createStatement();
       st.executeUpdate(sql);
+      ResultSet rs=st.executeQuery(id);
+      rs.next();
+			String name =rs.getString(1);
+       String seq = "CREATE SEQUENCE res_id_seq_"+name+" increment by 1minvalue 0start with 1";
+       st.executeUpdate(seq);
+
 
       cn.commit();
 
@@ -98,7 +61,31 @@ public class DBAccessor{
     }
   }
 
-  public void writeRes(String ThreadId){
-    String sql = "INSERT INTO Res(res_id, res)"
+  public void writeRes(String ThreadId, String ResContent){
+   String sql="null";
+       int si=0;
+  while(true){
+    String ko=String.valueOf(si);
+
+if(ThreadId.equals(ko)){
+     sql = "INSERT INTO Res(thread_id, res_id, res_content) VALUES('"+ThreadId+"', res_id_seq_"+ThreadId+".nextval, '" + ResContent + "')";
+     break;
+   }
+   si++;
+   }
+ try{
+      Statement st = cn.createStatement();
+      st.executeUpdate(sql);
+
+    cn.commit();
+
+    st.close();
+
+    cn.close();
+      }catch(SQLException e){
+        e.printStackTrace();
+      }catch(Exception e){
+        e.printStackTrace();
+      }
   }
 }
