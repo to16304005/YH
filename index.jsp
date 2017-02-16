@@ -2,8 +2,6 @@
 	contentType="text/html;chareset=Windows-31J" %>
 	<link rel="stylesheet" href="index.css">
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html>
 <head><title>TOP</title></head>
 <body background="haikei.png">
@@ -15,8 +13,8 @@
     <g>
     <table border="1" align="center" style="font-size: 20pt;">
       <tr><th colspan="2">スレッド名だよ～</th></tr>
-      <c:forEach var="th" items="${thread}">
-      <tr><td>${th.threadName}</td><td>${th.threadCreatedDate}</td>
+      <c:forEach var="thread" items="${thread}">
+      <tr><td>スレッド名</td><td>最終更新日時</td>
       </c:forEach>
     </table>
   </g>

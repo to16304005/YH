@@ -10,7 +10,7 @@ Resテーブル
 CREATE TABLE Res (
      thread_id   NUMBER(7)    CONSTRAINT fk_thread_id REFERENCES Thread(thread_id)
     ,res_id      NUMBER(7)
-    ,res_date    date         DEFAULT sysdate
+    ,res_date    date         DEFAULT sysdate 
     ,res_name    VARCHAR2(40)
     ,res_content VARCHAR2(4000) NOT NULL
     );
@@ -23,3 +23,28 @@ increment by 1
 minvalue 0
 start with 1
 ;
+
+
+
+insert into thread(thread_id,thread_name)
+values (thread_id_seq.nextval,'noname');
+
+
+resシーケンス
+
+create sequence res_id_seq
+increment by 1
+minvalue 0
+start with 1
+;sle
+
+
+insert into res(thread_id,res_id,res_content)
+values(thread_id_seq.currval,res_id_seq.nextval,'noname');
+
+
+
+
+
+
+
