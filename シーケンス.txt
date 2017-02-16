@@ -1,0 +1,20 @@
+create sequence thread_id_seq
+start with 1
+increment by 1
+maxvalue 10
+minvalue 1
+cycle
+nocache
+;
+
+
+drop sequence res_id_seq_1;
+drop sequence res_id_seq_2;
+drop sequence res_id_seq_3;
+drop sequence res_id_seq_4;
+drop sequence res_id_seq_5;
+drop sequence res_id_seq_6;
+drop sequence res_id_seq_7;
+drop sequence res_id_seq_8;
+drop sequence res_id_seq_9;
+drop sequence res_id_seq_10;
