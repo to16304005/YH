@@ -17,13 +17,28 @@ public class ThreadServlet extends HttpServlet{
 
     //tb.setThreadName(req.getParameter("ThreadName"));
     exe.addThreads(req.getParameter("ThreadName"));
-/*
-    req.setAttribute();
-    req.setAttribute();
+    req.setAttribute("thread",exe.getThreads());
 
-    RequestDispatcher dis = req.getRequestDispatcher();
-
+    RequestDispatcher dis = req.getRequestDispatcher("index.jsp");
     dis.forward(req, res);
-    */
+
+  }
+
+  public void doGet(HttpServletRequest req, HttpServletResponse res)
+  throws IOException, ServletException{
+
+    req.setCharacterEncoding("Windows-31J");
+
+	   try{
+  	  	//Executer
+    	Executer ex = new Executer();
+  		req.setAttribute("thread",ex.getThreads());
+  		RequestDispatcher dis = req.getRequestDispatcher("index.jsp");
+  		dis.forward(req, res);
+
+	  }catch(Exception e){
+  		e.printStackTrace();
+  		System.out.println("Thread‚Ìˆê——•\Ž¦‚Å—áŠO");
+  	}
   }
 }

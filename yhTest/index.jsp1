@@ -1,0 +1,12 @@
+<%@ page pageEncoding="Windows-31J"
+	contentType="text/html;chareset=Windows-31J" %>
+
+<html>
+<head><title>TOP</title></head>
+<body>
+	<h1>TOP</h1>
+	<form method="get" action="ThreadServlet">
+		<input type="submit" value="ƒXƒŒƒbƒhˆê——‚Ö" />
+	</form>
+</body>
+</html>

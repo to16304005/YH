@@ -2,11 +2,11 @@ package pac;
 
 public class ResBean{
 
-  private int resId;
+  private String resId;
   private String resContents;
   private String resDate;
 
-  public int getResId(){
+  public String getResId(){
     return this.resId;
   }
   public String getResDate(){
@@ -16,7 +16,7 @@ public class ResBean{
     return this.resContents;
   }
 
-  public void setResId(int resId){
+  public void setResId(String resId){
     this.resId = resId;
   }
   public void setResDate(String resDate){

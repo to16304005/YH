@@ -2,16 +2,18 @@ package pac;
 
 import java.util.ArrayList;
 import java.util.List;
- 
+
 
 public class ThreadBean{
 
-  private int threadId;
+  private String threadId;
   private String threadName;
   private String threadCreatedDate;
-  private ArrayList<ResBean> ResBeanList;
+  private ArrayList<ResBean> ResBeanList = new ArrayList<ResBean>();
 
-  public int getThreadId(){
+	//ResBean RB=new ResBean();
+
+  public String getThreadId(){
     return this.threadId;
   }
   public String getThreadName(){
@@ -20,11 +22,11 @@ public class ThreadBean{
   public String getThreadCreatedDate(){
     return this.threadCreatedDate;
   }
-  public ArrayList getResBean(){
+  public ArrayList<ResBean> getResBeanList(){
     return this.ResBeanList;
   }
 
-  public void setThreadId(int threadId){
+  public void setThreadId(String threadId){
     this.threadId = threadId;
   }
   public void setThreadName(String threadName){
