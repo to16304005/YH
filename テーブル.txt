@@ -2,7 +2,8 @@ Threadテーブル
 
 CREATE TABLE Thread (
       thread_id   NUMBER(7)      CONSTRAINT pk_thread_id PRIMARY KEY
-    ,thread_name  VARCHAR2(50)   NOT NULL　
+    ,thread_name  VARCHAR2(50)   NOT NULL
+    ,thread_create_name     VARCHAR2(50)   DEFAULT '名無しさん'　
     ,thread_created_date    date   DEFAULT sysdate NOT NULL
     );
 
@@ -11,14 +12,29 @@ CREATE TABLE Res (
      thread_id   NUMBER(7)    CONSTRAINT fk_thread_id REFERENCES Thread(thread_id)
     ,res_id      NUMBER(7)
     ,res_date    date         DEFAULT sysdate
-    ,res_name    VARCHAR2(40)
+    ,res_name    VARCHAR2(50)  DEFAULT '名無しさん'
     ,res_content VARCHAR2(4000) NOT NULL
+    );
+
+Userテーブル
+CREATE TABLE yh (
+      user_id   NUMBER(7)      CONSTRAINT pk_user_id PRIMARY KEY
+    ,user_name  VARCHAR2(50)   NOT NULL　
+    ,user_pass  VARCHAR2(50)   NOT NULL
     );
 
 
 threadシーケンス
 
 create sequence thread_id_seq
+increment by 1
+minvalue 0
+start with 1
+;
+
+userシーケンス
+
+create sequence yh_id_seq
 increment by 1
 minvalue 0
 start with 1
