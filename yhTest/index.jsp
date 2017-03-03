@@ -9,10 +9,27 @@
 	<title>TOP</title>
 	<link rel="stylesheet" href="index.css">
 </head>
-<body background="img2.png">
-	<div style="text-align:center">
-	<img src="img.png" width="500" height="150" alt="">
-	</div>
+<body>
+	<img src="obi2.png"height="120"width="1350">
+		<div style="position:absolute; top:126px; left:50px;">
+
+	<table border="2">
+		<td><a href="">ƒXƒŒˆê——‚Ö</a></td>
+			</table>
+		</div>
+
+		<div style="position:absolute; top:126px; left:150px;">
+
+	<table border="2">
+			<td><a href="">ƒwƒ‹ƒvƒy[ƒW‚Ö</a></td>
+	</table>
+ </div>
+</div>
+<br>
+		<br>
+		<hr>
+	<img src="asd.png"width="400" height="200">
+		<div id="super">
 	<h1>ƒXƒŒƒbƒhˆê——</h1>
 	<form method="POST" action="ThreadServlet">
 		<input type="text" name="ThreadName" €/><input type="submit" value="ƒXƒŒƒbƒh‚ð—§‚Ä‚é" />
@@ -28,5 +45,6 @@
 			   } %>
     </table>
 		<%@ include file="login.jsp" %>
+		<div/>
 </body>
 </html>
