@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 import pac.*;
 
 public class ResServlet extends HttpServlet{
+	
+  private String uname;
+	
   public void doPost(HttpServletRequest req, HttpServletResponse res)
   throws IOException, ServletException{
     req.setCharacterEncoding("Windows-31J");
@@ -16,8 +19,11 @@ public class ResServlet extends HttpServlet{
       String threadId = req.getParameter("threadId");
       HttpSession session = req.getSession();
       UserBean ub = (UserBean)session.getAttribute("loginUser");
-
+    try{
       ex.addRes(threadId, req.getParameter("ResContent"), ub.getUserName());
+    }catch(NullPointerException e){
+      ex.addRes(threadId, req.getParameter("ResContent"), "–¼–³‚µ‚³‚ñ");
+    }	
       req.setAttribute("res",ex.getRes(threadId));
 
       req.setAttribute("tname", ex.getTname(threadId));

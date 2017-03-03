@@ -1,11 +1,16 @@
-
-form{
+#super form{
   text-align:center;
 }
 h1{
   text-align:center;
 }
+cnt{
+  text-align:center;
+}
 g
 {
   font-size: 30px;
+}
+aaa {
+ text-align:center;
 }
