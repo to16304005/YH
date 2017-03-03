@@ -2,9 +2,25 @@
 	contentType="text/html;charset=Windows-31J"
 	import="pac.*" %>
 
+	<script language=javascript>
+<!--
+function show(inputData){
+    var objID=document.getElementById( "layer_" + inputData );
+    var buttonID=document.getElementById( "category_" + inputData );
+    if(objID.className=='close') {
+        objID.style.display='block';
+        objID.className='open';
+    }else{
+        objID.style.display='none';
+        objID.className='close';
+    }
+}
+//-->
+</script>
+
 <% UserBean loginUser = (UserBean)session.getAttribute("loginUser"); %>
 
-  <div style="position:fixed;right:0;top:0;">
+  <div style="position:fixed;right:0;top:150;">
 
 		<% if(loginUser == null) { %>
 			<form method="post" action="LoginServlet">
