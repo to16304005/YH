@@ -1,18 +1,16 @@
 <%@ page pageEncoding="Windows-31J"
 	contentType="text/html;charset=Windows-31J" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<link rel="stylesheet" href="res.css">
 
 <html>
 <head>
-<title>‚ê‚·‚Æ‚¤</title>
-<link rel="stylesheet" href="res.css">
+<title>ƒŒƒX“Še</title>
 </head>
-	<body background="img2.png">
+	<body>
+		<img src="obi2.png"height="120"width="1336">
+			<img src="asd.png"width="400" height="200">
 
-		<div style="text-align:center">
-	<img src="img.png" width="500" height="150" alt="">
-	</div>
 	<h1>${tname}</h1>
 	<a href="#toukou">ƒRƒƒ“ƒg“Še‚Ö</a>
 	<% try{ %>
