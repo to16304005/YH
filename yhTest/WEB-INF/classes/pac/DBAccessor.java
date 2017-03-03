@@ -70,9 +70,8 @@ public class DBAccessor{
 
   public ArrayList<ResBean> readRes(String threadid){
 
-	    String sql = "SELECT res_id,res_content, res_date FROM res WHERE thread_Id =" + threadid + "order by res_date desc";
+	    String sql = "SELECT res_id,res_content, res_date, res_name FROM res WHERE thread_Id =" + threadid + "order by res_date desc";
 	  	ThreadBean tb = new ThreadBean();
-		//ArrayList<ResBean> resList= new ArrayList<ResBean>();
 
   	try{
       Connection con = getConnection();
@@ -84,9 +83,8 @@ public class DBAccessor{
 	    	rb.setResId(rs.getString(1));
 	    	rb.setResContents(rs.getString(2));
 	    	rb.setResDate(rs.getString(3));
+        rb.setResName(rs.getString(4));
 	    	tb.setResBeanList(rb);
-
-        System.out.println(rs.getString(2));
 	    }
 
   	}catch(SQLException e){
@@ -123,19 +121,24 @@ public class DBAccessor{
     }
   }
 
-  public void writeRes(String ThreadId, String ResContent){
+  public void writeRes(String ThreadId, String ResContent, String userName){
    String sql="null";
        int si=0;
     while(true){
       String ko=String.valueOf(si);
 
-  if(ThreadId.equals(ko)){
-       sql = "INSERT INTO Res(thread_id, res_id, res_content) VALUES('"+ThreadId+"', res_id_seq_"+ThreadId+".nextval, '" + ResContent + "')";
-       break;
-     }
-     si++;
-     }
-   try{
+      if(ThreadId.equals(ko)){
+        if(userName == null){
+           sql = "INSERT INTO Res(thread_id, res_id, res_content) VALUES('"+ThreadId+"', res_id_seq_"+ThreadId+".nextval, '" + ResContent + "')";
+           break;
+        }else{
+          sql = "INSERT INTO Res(thread_id, res_id, res_content, res_name) VALUES('"+ThreadId+"', res_id_seq_"+ThreadId+".nextval, '" + ResContent + "', " + "'" + userName + "' )";
+          break;
+        }
+      }
+      si++;
+    }
+    try{
         Statement st = cn.createStatement();
         st.executeUpdate(sql);
 
@@ -167,5 +170,51 @@ public class DBAccessor{
       e.printStackTrace();
     }
     return tname;
+  }
+
+  public String addUser(String account, String pass){
+    String sql = "INSERT INTO yh VALUES(yh_id_seq.nextval,'"+ account +"', '" + pass + "' )";
+
+    try{
+      Statement st = cn.createStatement();
+      st.executeUpdate(sql);
+
+      cn.commit();
+
+      st.close();
+
+      cn.close();
+    }catch(SQLException e){
+      e.printStackTrace();
+      System.out.println("アカウント作成で例外");
+    }catch(Exception e){
+      e.printStackTrace();
+    }
+    return "アカウントが作成されました。";
+  }
+
+  public ArrayList userListRe(){
+    String sql = "SELECT user_name, user_pass FROM yh";
+    ArrayList<UserBean> userBeanList = new ArrayList<UserBean>();
+    try{
+      Connection con = getConnection();
+	    Statement st = con.createStatement();
+	    ResultSet rs = st.executeQuery(sql);
+
+	    while(rs.next()){
+	    	UserBean ub = new UserBean();
+	    	ub.setUserName(rs.getString(1));
+	    	ub.setUserPass(rs.getString(2));
+	    	userBeanList.add(ub);
+
+        System.out.println(rs.getString(2));
+	    }
+
+  	}catch(SQLException e){
+			e.printStackTrace();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+  	return userBeanList;
   }
 }

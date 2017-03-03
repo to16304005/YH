@@ -4,6 +4,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import pac.*;
 
 public class ResServlet extends HttpServlet{
@@ -13,8 +14,10 @@ public class ResServlet extends HttpServlet{
     try{
       Executer ex = new Executer();
       String threadId = req.getParameter("threadId");
+      HttpSession session = req.getSession();
+      UserBean ub = (UserBean)session.getAttribute("loginUser");
 
-      ex.addRes(threadId, req.getParameter("ResContent"));
+      ex.addRes(threadId, req.getParameter("ResContent"), ub.getUserName());
       req.setAttribute("res",ex.getRes(threadId));
 
       req.setAttribute("tname", ex.getTname(threadId));

@@ -27,5 +27,6 @@
 			<% }catch(Exception e){
 			   } %>
     </table>
+		<%@ include file="login.jsp" %>
 </body>
 </html>

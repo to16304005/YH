@@ -2,6 +2,7 @@ package pac;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Iterator;
 
 
 public class Executer{
@@ -11,23 +12,23 @@ public class Executer{
     dba.writeThreads(tb);
   }
 
-  public void addRes(String ThreadId, String ResContent){
+  public void addRes(String ThreadId, String ResContent, String userName){
     DBAccessor dba = new DBAccessor();
     dba.createConnection();
-    dba.writeRes(ThreadId, ResContent);
+    dba.writeRes(ThreadId, ResContent, userName);
   }
 
   public ArrayList<ThreadBean> getThreads(){
     DBAccessor DBA=new DBAccessor();
-    //?øΩf?øΩ[?øΩ^?øΩx?øΩ[?øΩX?øΩ…ê⁄ëÔøΩ
+
     DBA.createConnection();
 
-    //DBAccessor?øΩ?øΩ?øΩ?øΩ?øΩX?øΩ?øΩ?øΩb?øΩg?øΩ?øΩ?øΩÊìæ
+
     return DBA.readThreads();
   }
 
   public ArrayList<ResBean> getRes(String threadid){
-    
+
     DBAccessor DBA=new DBAccessor();
 
     DBA.createConnection();
@@ -39,5 +40,18 @@ public class Executer{
     DBA.createConnection();
 
     return DBA.getTName(threadId);
+  }
+
+  public String createAccount(String id, String pass){
+    DBAccessor DBA = new DBAccessor();
+    DBA.createConnection();
+
+    return DBA.addUser(id, pass);
+  }
+
+  public ArrayList getUserList(){
+    DBAccessor DBA = new DBAccessor();
+    DBA.createConnection();
+    return DBA.userListRe();
   }
 }

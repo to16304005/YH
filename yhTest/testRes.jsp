@@ -19,7 +19,7 @@
 	<c:forEach var="res1" items="${res}">
 
 		<table>
-			<tr><th>${res1.resId}</th><td>  ${res1.resDate}</td></tr>
+			<tr><th>${res1.resId}</th><td>${res1.resName}</td><td>  ${res1.resDate}</td></tr>
 			<tr><td colspan="2">${res1.resContents}</td></tr>
 		</table>
 		<hr>
@@ -37,5 +37,6 @@
 		<input type="submit" value="“Še‚·‚é‚æ`" />
 	</form>
 	</a>
+	<%@ include file="login.jsp" %>
 </body>
 </html>

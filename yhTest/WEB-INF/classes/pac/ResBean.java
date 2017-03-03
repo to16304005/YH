@@ -5,6 +5,7 @@ public class ResBean{
   private String resId;
   private String resContents;
   private String resDate;
+  private String resName;
 
   public String getResId(){
     return this.resId;
@@ -15,6 +16,9 @@ public class ResBean{
   public String getResContents(){
     return this.resContents;
   }
+  public String getResName(){
+    return this.resName;
+  }
 
   public void setResId(String resId){
     this.resId = resId;
@@ -24,5 +28,8 @@ public class ResBean{
   }
   public void setResContents(String resContents){
     this.resContents = resContents;
+  }
+  public void setResName(String resName){
+    this.resName = resName;
   }
 }

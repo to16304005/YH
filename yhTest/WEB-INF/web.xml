@@ -50,4 +50,26 @@
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>CreateAccountServlet</servlet-name>
+    <servlet-class>CreateAccountServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CreateAccountServlet</servlet-name>
+    <url-pattern>/CreateAccountServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>LoginServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+
+
+
 </web-app>
