@@ -19,7 +19,8 @@ public class LoginServlet extends HttpServlet{
   public void doPost(HttpServletRequest req, HttpServletResponse res)
   throws IOException, ServletException{
     req.setCharacterEncoding("Windows-31J");
-
+	
+  	boolean loginResult = false;
 
     Executer exe = new Executer();
     ArrayList<UserBean> userBeanList = new ArrayList<UserBean>();

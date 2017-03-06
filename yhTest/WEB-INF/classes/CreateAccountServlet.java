@@ -13,7 +13,7 @@ public class CreateAccountServlet extends HttpServlet{
     req.setCharacterEncoding("Windows-31J");
 
     Executer exe = new Executer();
-    req.setAttribute("mess", exe.createAccount(req.getParameter("id"), req.getParameter("id")));
+    req.setAttribute("mess", exe.createAccount(req.getParameter("id"), req.getParameter("pass")));
 
 
     RequestDispatcher dis = req.getRequestDispatcher("index.jsp");

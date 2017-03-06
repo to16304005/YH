@@ -9,7 +9,10 @@
 </head>
 	<body>
 		<img src="design/obi2.png"height="120"width="1336">
+		<div style="position:aboslute; top:126;left:100px;">
+		<a href="http://localhost:510/yhtest/ThreadServlet">ƒXƒŒˆê——‚Ö</a></div>
 			<img src="design/asd.png"width="400" height="200">
+			
 
 	<h1>${tname}</h1>
 	<a href="#toukou">ƒRƒƒ“ƒg“Še‚Ö</a>
@@ -17,8 +20,8 @@
 	<c:forEach var="res1" items="${res}">
 
 		<table>
-			<tr><th>${res1.resId}</th><td>${res1.resName}</td><td>  ${res1.resDate}</td></tr>
-			<tr><td colspan="2">${res1.resContents}</td></tr>
+			<tr><th>${res1.resId}</th><td>${res1.resName}</td><td>${res1.resDate}</td></tr>
+			<tr><td colspan="3">${res1.resContents}</td></tr>
 		</table>
 		<hr>
 	</c:forEach>
